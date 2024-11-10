@@ -41,7 +41,7 @@ def play():
         all_sprites.update()
         enemies.update()
         # Generate enemies randomly
-        if random.randrange(100) < 3:  # 3% chance per frame
+        if random.randrange(100) < ENEMY_SPAWN_CHANCE:
             enemy = Enemy()
             all_sprites.add(enemy)
             enemies.add(enemy)
@@ -50,8 +50,8 @@ def play():
         if hits:
             state = "menu"  # Return to menu after death
         screen.fill(WHITE)
-        pygame.draw.rect(screen, GRAY, [0, HEIGHT // 4 - 20, WIDTH, 40])  # Upper platform
-        pygame.draw.rect(screen, GRAY, [0, 3 * HEIGHT // 4 - 20, WIDTH, 40])  # Lower platform
+        pygame.draw.rect(screen, GRAY, [0, UPPER_PLATFORM_Y, WIDTH, 40])  # Upper platform
+        pygame.draw.rect(screen, GRAY, [0, LOWER_PLATFORM_Y, WIDTH, 40])  # Lower platform
         all_sprites.draw(screen)
         font = pygame.font.SysFont(None, 35)
         text = font.render("Score: " + str(player.score.point), True, BLUE)

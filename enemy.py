@@ -1,17 +1,16 @@
 import pygame
-from cores import *
-from configuracoes import *
+from colors import *
+from settings import *
 import random
 
-
-class Inimigo(pygame.sprite.Sprite):
+class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = pygame.Surface([40, 40])
-        self.image.fill(VERMELHO)
+        self.image.fill(RED)
         self.rect = self.image.get_rect()
-        self.rect.y = random.randint(ALTURA // 4 + 80, 3 * (ALTURA // 4) - 80)
-        self.rect.x = LARGURA
+        self.rect.y = random.randint(HEIGHT // 4 + 80, 3 * (HEIGHT // 4) - 80)
+        self.rect.x = WIDTH
         self.speed = random.randint(3, 6)
 
     def update(self):
